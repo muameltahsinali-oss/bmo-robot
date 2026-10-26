@@ -1,0 +1,16 @@
+pygame==2.5.0
+openai==1.3.0
+SpeechRecognition==3.10.0
+gTTS==2.3.2
+pyttsx3==2.90
+python-dotenv==1.0.0
+PyYAML==6.0
+Adafruit-Blinka==8.24.0
+adafruit-circuitpython-rgb-display==3.10.15
+spidev==3.6
+RPi.GPIO==0.7.1
+pillow==10.0.0
+vosk==0.3.45  # Offline STT Fallback
+pvporcupine==3.0.1 # Wake word (optional, usually requires key)
+# For audio handling
+pyaudio==0.2.13

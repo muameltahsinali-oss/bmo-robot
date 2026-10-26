@@ -1,0 +1,40 @@
+# BMO Face Animation Guide
+
+## Asset List
+*   `bmo_face_idle`: Default state. Open eyes, small smile.
+*   `bmo_face_blink`: Closed eyes (horizontal lines).
+*   `bmo_face_happy`: Squinting eyes (inverted arcs), big smile.
+
+## Frame Timing Suggestions
+
+### 1. Natural Blink (Every 3-6 seconds)
+Most blinks are fast. Don't hold the blink frame too long.
+*   0.0s: `idle`
+*   3.0s: `blink` (Display for **0.1 - 0.15 seconds**)
+*   3.15s: `idle`
+
+### 2. Double Blink (Occasional variety)
+*   `blink` (0.1s) -> `idle` (0.1s) -> `blink` (0.1s) -> `idle`
+
+### 3. Happy Reaction (Event triggered)
+When user compliments or "play music" is triggered:
+*   Transition: `idle` -> `happy`
+*   Hold `happy` for **2.0 - 4.0 seconds**.
+*   Return to `idle`.
+
+### 4. Speaking/Lip-Sync
+If using the static images for speaking (simple mode):
+*   Rapidly toggle between `idle` (or a `speaking` frame if generated) and `happy` (open mouth) based on volume amplitude.
+*   Rate: ~10-15fps.
+
+## Technical Implementation
+Load all images into memory on startup (`pygame.image.load`). Do not load from disk every frame.
+```python
+faces = {
+    'idle': pygame.image.load('assets/bmo_face_idle.png'),
+    'blink': pygame.image.load('assets/bmo_face_blink.png'),
+    'happy': pygame.image.load('assets/bmo_face_happy.png')
+}
+current_face = faces['idle']
+screen.blit(current_face, (0,0))
+```

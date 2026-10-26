@@ -1,0 +1,31 @@
+system:
+  name: "BMO"
+  wake_word: "hey bmo"
+  volume: 80
+  idle_timeout: 30 # seconds before idle mode/music
+  display_mode: "window" # options: tft, window (for VNC/HDMI)
+
+audio:
+  stt_engine: "whisper" # options: whisper, vosk, google
+  tts_engine: "pyttsx3" # options: pyttsx3, gtts, elevenlabs
+  voice_id: "english-us" # generic placeholder
+  rate: 150 # TTS speed
+
+face:
+  width: 320
+  height: 240
+  fps: 30
+  rotation: 90 # degrees (0, 90, 180, 270)
+  brightness: 128
+
+gpio:
+  # BCM Pin numbering
+  buttons:
+    action_1: 23
+    action_2: 24
+    reset: 25
+  display:
+    cs: 8
+    dc: 25
+    rst: 27
+    led: 18 # PWM for backlight
